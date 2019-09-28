@@ -2,16 +2,11 @@
 
 const rule = require('../../../lib/rules/map');
 const RuleTester = require('eslint').RuleTester;
-const ruleTester = new RuleTester();
+const RuleTesterRunner = new RuleTester();
 
-ruleTester.run('_.map to native Array#map', rule, {
+RuleTesterRunner.run('_.map to native Array#map', rule, {
   
   valid: [
-  
-    // Игнорируем, если вызов без функции
-    {
-      code: '_.map({});',
-    },
     
     // Игнорируем при работе с объектами
     {
