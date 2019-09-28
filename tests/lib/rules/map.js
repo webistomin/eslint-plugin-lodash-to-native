@@ -2,11 +2,10 @@
 
 const rule = require('../../../lib/rules/map');
 const RuleTester = require('eslint').RuleTester;
-const errorMsg = 'Replace lodash with native Array#map';
-
 const ruleTester = new RuleTester();
 
 ruleTester.run('_.map to native Array#map', rule, {
+  
   valid: [
   
     // Игнорируем, если вызов без функции
@@ -37,7 +36,7 @@ ruleTester.run('_.map to native Array#map', rule, {
     {
       code: '_.map([1, 2, 3], fn);',
       errors: [
-        { message: errorMsg }
+        { messageId: 'errorMsg', }
       ],
     },
     
@@ -45,7 +44,7 @@ ruleTester.run('_.map to native Array#map', rule, {
     {
       code: '_.map(Array.from("SHRI"), fn);',
       errors: [
-        { message: errorMsg }
+        { messageId: 'errorMsg', }
       ],
     },
   
@@ -53,7 +52,7 @@ ruleTester.run('_.map to native Array#map', rule, {
     {
       code: '_.map(new Array("SHRI"), fn);',
       errors: [
-        { message: errorMsg }
+        { messageId: 'errorMsg', }
       ],
     },
     
@@ -61,7 +60,7 @@ ruleTester.run('_.map to native Array#map', rule, {
     {
       code: 'var a = [1, 2, 3]; _.map(a, fn);',
       errors: [
-        { message: errorMsg }
+        { messageId: 'errorMsg', }
       ],
     },
     
