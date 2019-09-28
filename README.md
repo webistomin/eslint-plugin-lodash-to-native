@@ -1,49 +1,64 @@
 # eslint-plugin-lodash-to-native
 
-_.map to native Array#map
+ESLint плагин, заменяющий _.map из _lodash_ на нативный Array#map.
 
-## Installation
+## Установка
 
-You'll first need to install [ESLint](http://eslint.org):
+Сначала необходимо установить [ESLint](http://eslint.org):
 
 ```
 $ npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-lodash-to-native`:
+Затем установить плагин `eslint-plugin-lodash-to-native`:
 
 ```
-$ npm install eslint-plugin-lodash-to-native --save-dev
+$ npm i github.com/webistomin/eslint-plugin-lodash-to-native.git --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-lodash-to-native` globally.
+**Примечание:** Если вы установили ESLint глобально (используя `-g` флаг), тогда вам также нужно установить `eslint-plugin-lodash-to-native` глобально.
 
-## Usage
+## Пример использования
 
-Add `lodash-to-native` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Добавьте `lodash-to-native` в секцию плагинов вашего конфигурационного файла `.eslintrc.js`. Вы можете опускать префикс `eslint-plugin-`. Затем сконфигурируйте правила, который хотите использовать:
 
-```json
-{
-    "plugins": [
-        "lodash-to-native"
-    ]
-}
+```js
+/* .eslintrc.js */
+
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: "module"
+  },
+  "plugins": [
+    "lodash-to-native"
+  ],
+  "rules": {
+    "lodash-to-native/map": "warn"
+  },
+};
+
 ```
 
+## Правила
 
-Then configure the rules you want to use under the rules section.
+<table>
+    <tr>
+        <td>lodash-to-native/map</td>
+        <td>Правило должно находить использование функции `_.map`, например `_.map(collection, fn)`, и, если это возможно, предлагать заменить его на использование нативного `Array#map`.</td>
+    </tr>
+</table>
 
-```json
-{
-    "rules": {
-        "lodash-to-native/rule-name": 2
-    }
-}
+## Тестирование
+
+Для теста используется команда:
+
+```
+$ npm test
 ```
 
-## Supported Rules
+Пример использования в файле [example/index.js](example/index.js). Если будут ошибки ESLint, о том, что плагин не найдён, то нужно вырезать папку _example_ в другое место и запускать вне проекта.
 
-* Fill in provided rules here
 
 
 

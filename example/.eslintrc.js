@@ -1,6 +1,7 @@
 module.exports = {
   parserOptions: {
-    ecmaVersion: 6
+    ecmaVersion: 6,
+    sourceType: "module"
   },
   "plugins": [
     "lodash-to-native"
